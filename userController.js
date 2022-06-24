@@ -1,5 +1,5 @@
 const userModel = require('./userModel')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 // const validation = require('./validations')
 
@@ -10,11 +10,11 @@ let createUser = async (req, res) => {
         const {fname, lname, email, phone, password} = req.body
         const salt = await bcrypt.genSalt(6);
 
-        hashedPassword = await bcrypt.hash(password, salt)
+        let hashedPassword = await bcrypt.hash(password, salt)
 
-        data = {fname, lname, email, phone, password : hashedPassword}
+        let data = {fname, lname, email, phone, password : hashedPassword}
 
-        savedDetails = await userModel.create(data)
+        let savedDetails = await userModel.create(data)
 
         res.status(201).send({status:true, message:'user data saved successfully', data:savedDetails})
     }
