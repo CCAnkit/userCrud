@@ -1,5 +1,5 @@
 const userModel = require('./userModel')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 
 const isValidReqBody = requestBody => Object.keys(requestBody).length > 0;
